@@ -1,16 +1,13 @@
 n = int(input())
 numbers = list(range(n+1))
 
-if 1 in numbers:
-    numbers.remove(1)
+numbers[0] = numbers[1] = 2
+for i in range(2, int(n**0.5)+1):
+    if numbers[i]:
+        for j in range(i*i, max(numbers)+1, i):
+            if numbers[j]==j:
+                numbers[j] = i
 
-if len(numbers)>0:
-    for i in range(2,int(max(numbers)**0.5)+1):
-        numbers = [x for x in numbers if x==i or x%i!=0]
-
-for num in numbers:
-    while n%num==0:
-        n/=num
-        print(num)
-    if n==1:
-        break
+while n>1:
+    print(numbers[n])
+    n //= numbers[n]

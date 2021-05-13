@@ -7,6 +7,7 @@ if 1 in numbers:
 
 if len(numbers)>0:
     for i in range(2,int(max(numbers)**0.5)+1):
-        numbers = [x for x in numbers if x==i or x%i!=0]
+        if i in numbers:
+            numbers = [x for x in numbers if x==i or x%i!=0]
 
 print(len(numbers))
